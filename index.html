@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>純前端背單字 App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>背單字練習</h1>
+    <nav>
+      <button id="showFlashcardBtn" class="nav-btn active">單字卡</button>
+      <button id="showManagerBtn" class="nav-btn">管理頁面</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="flashcardSection" class="page-section">
+      <div class="flashcard-container">
+        <div class="flashcard" id="flashcard">
+          <div class="side side-front" id="cardFront">
+            <p class="card-label">英文單字</p>
+            <h2 id="wordText">請新增單字</h2>
+          </div>
+          <div class="side side-back" id="cardBack">
+            <p class="card-label">詳細資訊</p>
+            <div class="card-info">
+              <p><strong>翻譯：</strong><span id="translationText">-</span></p>
+              <p><strong>詞性：</strong><span id="partOfSpeechText">-</span></p>
+              <p><strong>例句：</strong><span id="exampleText">-</span></p>
+              <p><strong>字根分析：</strong><span id="rootText">-</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-actions">
+        <button id="prevCardBtn" class="action-btn">上一張</button>
+        <button id="nextCardBtn" class="action-btn">下一張</button>
+      </div>
+      <p class="hint">點擊卡片翻轉</p>
+    </section>
+
+    <section id="managerSection" class="page-section hidden">
+      <div class="manager-panel">
+        <h2>新增 / 編輯單字</h2>
+        <form id="wordForm">
+          <div class="form-row">
+            <label for="wordInput">英文單字</label>
+            <input id="wordInput" type="text" placeholder="例如: example" required />
+          </div>
+          <div class="form-row form-grid">
+            <div>
+              <label for="translationInput">翻譯</label>
+              <input id="translationInput" type="text" placeholder="翻譯" />
+            </div>
+            <div>
+              <label for="posInput">詞性</label>
+              <input id="posInput" type="text" placeholder="noun / verb / adj" />
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="exampleInput">例句</label>
+            <textarea id="exampleInput" rows="3" placeholder="例句"></textarea>
+          </div>
+          <div class="form-row">
+            <label for="rootInput">字根分析</label>
+            <textarea id="rootInput" rows="3" placeholder="字根分析"></textarea>
+          </div>
+          <div class="form-actions">
+            <button id="autoFillBtn" type="button" class="action-btn">自動填入</button>
+            <button id="saveWordBtn" type="submit" class="action-btn primary">儲存單字</button>
+            <button id="clearFormBtn" type="button" class="action-btn">清除</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="word-list-panel">
+        <h2>單字列表</h2>
+        <div id="wordList" class="word-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>純前端單字卡，使用 localStorage 保存資料。</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
